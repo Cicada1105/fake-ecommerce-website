@@ -1,0 +1,21 @@
+extends layout.pug
+
+block page-content
+	main(class="page-content")
+		section(class="contact-section")
+				div(class="flex-wrapper")
+					h2(class="contact__title") Contact Us
+					form(class="contact-form")
+						div(class="flex-wrapper")
+							label(for="user-name") Name:
+							input(id="user-name",type="text",name="name")
+						div(class="flex-wrapper")
+							label(for="user-email") Email:
+							input(id="user-email",type="email",name="email")
+						div(class="flex-wrapper")
+							label(for="user-phone") Number:
+							input(id="user-phone",type="tel",name="phone")
+						div(class="flex-wrapper")
+							label(for="user-message") Message:
+							input(id="user-message",type="text",name="message")
+						button(type="button") Sign Up

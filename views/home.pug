@@ -1,0 +1,28 @@
+extends layout.pug
+
+block page-content
+	main(class="page-content",id="home-page-content")
+		div(class="flex-container")
+			section(class="slogan-side-section")
+				h2(class="slogan-section__title") Union of innovation and business
+				p(class="slogan-section__paragraph") Removing the stress of making an online presence so you can focus on what matters
+				div(class="slogan-section-links")
+					a(href="/about") Learn More
+					a(href="/contact") Contact Us
+				div(class="slogan-section-graphic")
+					// Image obtained from canva.com
+					img(src="/imgs/computer.png",alt="Computer")
+			section(class="sign-up-side-section")
+				div(class="flex-wrapper")
+					h2(class="sign-up__title") Sign up for free today!
+					form(class="sign-up-form")
+						div(class="flex-wrapper")
+							label(for="user-name") Name:
+							input(id="user-name",type="text",name="name")
+						div(class="flex-wrapper")
+							label(for="user-email") Email:
+							input(id="user-email",type="email",name="email")
+						div(class="flex-wrapper")
+							label(for="user-password") Password:
+							input(id="user-password",type="password",name="password")
+						button(type="button") Sign Up

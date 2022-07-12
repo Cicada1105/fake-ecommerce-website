@@ -1,0 +1,14 @@
+extends layout.pug
+
+include static/bubble.pug
+
+block page-content
+	main(class="page-content",id="about-page-content")
+		div(class="flex-container")
+			section(class="bubble-side-section")
+				+bubble("1.","Consultation")
+				+bubble("2.","Negotiation")
+				+bubble("3.","Future")
+			section(class="mission-side-section")
+				h2(class="mission-section__title") Take care of what matters
+				p(class="mission-section__paragraph") Here at Assuage Solutions, our mission is to remedy your need for expanding your business. No longer do you need to worry about your online presence, leave that to us. We exist to support you and your business ventures.

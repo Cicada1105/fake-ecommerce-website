@@ -1,0 +1,274 @@
+/*
+	 Page Navigation
+	--------------------------
+	1. Global
+	2. Header
+	3. Main
+	4. Home Page
+	5. About Page
+	6. Contact Page
+	7. Footer
+	8. Utilities
+	9. Media Queries
+*/
+/**************/
+/*   Global   */
+/**************/
+/* Style Imports */
+@import url('https://fonts.googleapis.com/css2?family=Cardo&family=Josefin+Sans&display=swap');
+
+/* Colour Definitions */
+:root {
+	--primary-colour: #6d2ee3;
+	--secondary-colour: #79c3ca;
+	--font-colour: white;
+	--backdrop-colour: #373737;
+	--title-font: 'Cardo', serif;
+	--paragraph-font: 'Josefin Sans', sans-serif;
+}
+html, body {
+	box-sizing: border-box;
+	margin: 0px;
+}
+a {
+	text-decoration: none;
+	color: white;
+}
+a:hover {  }
+a:active {  }
+a:active {  }
+form label {
+	font-size: 1.25rem;
+	padding-right: 5rem;
+}
+form > div {
+	justify-content: flex-end;
+	width: 20rem;
+	margin: auto;
+}
+[class $= "__title"] {
+	font-family: var(--title-font);
+}
+[class $= "__paragraph"] {
+	font-family: var(--paragraph-font);
+}
+/**************/
+/*   Header   */
+/**************/
+.page-header {
+	font-family: var(--paragraph-font);
+	background-color: var(--backdrop-colour);
+	color: white;
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+}
+.page-header__title {
+	font-family: var(--paragraph-font);
+	font-size: 1.5rem;
+	padding-left: 1rem;
+}
+.nav-list {
+	list-style-type: none;
+	margin: 0px;
+}
+.nav-list__item {
+	padding: 0.65rem 0.75rem;
+}
+.nav-list__item:hover {
+	background-color: var(--secondary-colour);
+	cursor: pointer;
+}
+/************/
+/*   Main   */
+/************/
+.page-content {
+	padding-top: 5rem;
+	padding-bottom: 5rem;
+}
+.page-content::after {
+	background: linear-gradient(135deg, var(--primary-colour), var(--secondary-colour));
+	position: absolute;
+	width: 100%;
+	height: 100vh;
+	content: "";
+	top: 0px;
+	z-index: -2;
+}
+#home-page-content::after {
+	clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 0% 70%, 0% 0%);
+}
+#about-page-content::after {
+	clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 0% 50%, 0% 0%);
+}
+[class $= "side-section"], .contact-section {
+	text-align: center;
+	color: white;
+	width: 90%;
+}
+/*****************/
+/*   Home Page   */
+/*****************/
+/* Left section - Slogan */
+.slogan-section__title, .mission-section__title {
+	font-size: 2rem;
+	width: 18rem;
+	margin: auto;
+	margin-bottom: 2rem;
+}
+.slogan-section-links {
+	margin: 5rem 0rem;
+}
+.slogan-section-links > a {
+	padding: 0.5rem 0.95rem;
+	margin: 0rem 2rem;
+}
+.slogan-section-links > a:first-of-type {
+	background-color: var(--secondary-colour);
+	color: black;
+}
+.slogan-section-links > a:last-of-type {
+	background-color: white;
+	color: var(--primary-colour);
+}
+.slogan-section-graphic > img {
+	width: 60%;
+}
+/* Right section - Sign up form */
+.sign-up-side-section, .contact-section {
+	background-color: var(--font-colour);
+	box-shadow: 10px 10px 15px var(--secondary-colour);
+	font-family: var(--paragraph-font);
+	border-radius: 2rem;
+	color: unset;
+	height: 28rem;
+}
+.sign-up-side-section > div.flex-wrapper, .contact-section > div.flex-wrapper {
+	justify-content: center;
+	flex-direction: column;
+	height: 100%;
+}
+.sign-up__title, .contact__title {
+	font-size: 1.75rem;
+	margin-bottom: 3rem;
+	margin-top: 0rem;
+}
+.sign-up-form > div, .contact-form > div {
+	margin-bottom: 2rem;
+}
+.sign-up-form > button, .contact-form > button {
+	background-color: var(--primary-colour);
+	font-size: 1rem;
+	margin-top: 1rem;
+	padding: 0.5rem 1rem;
+	color: var(--font-colour);
+}
+/******************/
+/*   About Page   */
+/******************/
+.bubble-side-section {
+	position: relative;
+	height: 27rem;
+	/* min-width will override the max-width set above */
+	min-width: 36rem;
+}
+.bubble {
+	position: absolute;
+	width: 12rem;
+	height: 12rem;
+}
+.bubble::before {
+	background-color: var(--secondary-colour);
+	position: absolute;
+	border-radius: 50%;
+	content: "";
+	opacity: 0.5;
+	width: 12rem;
+	height: 12rem;
+	top: 0px;
+	left: 0px;
+	z-index: -1;
+}
+.bubble:first-of-type {
+	left: 6rem;
+}
+.bubble:nth-of-type(2) {
+	margin-left: calc(100% - 12rem);
+	top: 7rem;
+}
+.bubble:last-of-type {
+	top: 15rem;
+}
+.bubble__number {
+	font-size: 1.5rem;
+	font-weight: bold;
+	display: block;
+	margin-top: 25%;
+}
+.bubble__title {
+	margin-top: 0px;
+}
+.mission-side-section {
+	order: -1;
+}
+/********************/
+/*   Contact Page   */
+/********************/
+.contact-section {
+	margin: auto;
+}
+/**************/
+/*   Footer   */
+/**************/
+.page-footer {
+	background-color: var(--backdrop-colour);
+	color: white;
+	position: fixed;
+	width: 100%;
+	padding: 0px;
+	top: calc(100% - 5rem);
+}
+.page-footer__copyright {
+	font-family: var(--paragraph-font);
+	margin: 1rem;
+	padding: 1rem;
+}
+/*****************/
+/*   Utilities   */
+/*****************/
+.flex-wrapper {
+	display: flex;
+	flex-flow: row wrap;
+}
+.flex-container {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	gap: 3rem;
+}
+/*********************/
+/*   Media Queries   */
+/*********************/
+@media only screen and (min-width: 720px) {
+	[class $= "side-section"], .contact-section {
+		width: 60%;
+	}
+}
+/* if w > 1007 && h < 726 */
+/* Dimensions at which home page gets scroll-bar */
+@media only screen and (min-width: 1007px) {/*, (min-height: 726px) { */ 
+	[class $= "side-section"], .contact-section {
+		width: 40%;
+		max-width: 31rem;
+	}
+}
+@media only screen and (min-width: 1420px) {
+	[class $= "side-section"] {
+		margin: auto 6rem;
+	}
+	.sign-up-side-section {
+		margin: 0px 6rem;
+	}
+}
