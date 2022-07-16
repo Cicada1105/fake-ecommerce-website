@@ -2,10 +2,17 @@
 	 Page Navigation
 	--------------------------
 	1. Global
+		- Style Imports
+		- Colour Definitions
 	2. Header
 	3. Main
 	4. Home Page
+		- Slogan
+		- Sign Up Form
 	5. About Page
+		- Bubbles
+		- Mission Statement
+		- Team Members
 	6. Contact Page
 	7. Footer
 	8. Utilities
@@ -14,29 +21,33 @@
 /**************/
 /*   Global   */
 /**************/
-/* Style Imports */
+/*   Style Imports   */
 @import url('https://fonts.googleapis.com/css2?family=Cardo&family=Josefin+Sans&display=swap');
 
-/* Colour Definitions */
+/*   Colour Definitions   */
 :root {
 	--primary-colour: #6d2ee3;
-	--secondary-colour: #79c3ca;
+	/*--secondary-colour: #79c3ca;*/
+	--secondary-colour: #397F98;
 	--font-colour: white;
+	--base-font-size: 16px;
 	--backdrop-colour: #373737;
 	--title-font: 'Cardo', serif;
 	--paragraph-font: 'Josefin Sans', sans-serif;
 }
 html, body {
+	font-size: var(--base-font-size);
+	background-color: #f5f5f5;
 	box-sizing: border-box;
 	margin: 0px;
+	z-index: -1;
 }
 a {
 	text-decoration: none;
-	color: white;
 }
 a:hover {  }
 a:active {  }
-a:active {  }
+a:visited {  }
 form label {
 	font-size: 1.25rem;
 	padding-right: 5rem;
@@ -58,12 +69,14 @@ form > div {
 .page-header {
 	font-family: var(--paragraph-font);
 	background-color: var(--backdrop-colour);
-	color: white;
+	position: relative;
+	color: var(--font-colour);
 	display: flex;
 	flex-flow: row wrap;
 	align-items: center;
 	justify-content: space-between;
 	width: 100%;
+	z-index: 1;
 }
 .page-header__title {
 	font-family: var(--paragraph-font);
@@ -81,6 +94,9 @@ form > div {
 	background-color: var(--secondary-colour);
 	cursor: pointer;
 }
+.nav-list__item > a {
+	color: var(--font-colour);
+}
 /************/
 /*   Main   */
 /************/
@@ -95,7 +111,7 @@ form > div {
 	height: 100vh;
 	content: "";
 	top: 0px;
-	z-index: -2;
+	z-index: 0;
 }
 #home-page-content::after {
 	clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 0% 70%, 0% 0%);
@@ -111,7 +127,10 @@ form > div {
 /*****************/
 /*   Home Page   */
 /*****************/
-/* Left section - Slogan */
+[class $= "side-section"] {
+	z-index: 1;
+}
+/*   Slogan - Left Section   */
 .slogan-section__title, .mission-section__title {
 	font-size: 2rem;
 	width: 18rem;
@@ -136,7 +155,7 @@ form > div {
 .slogan-section-graphic > img {
 	width: 60%;
 }
-/* Right section - Sign up form */
+/*   Sign Up Form - Right Section   */
 .sign-up-side-section, .contact-section {
 	background-color: var(--font-colour);
 	box-shadow: 10px 10px 15px var(--secondary-colour);
@@ -168,6 +187,7 @@ form > div {
 /******************/
 /*   About Page   */
 /******************/
+/*   Bubbles   */
 .bubble-side-section {
 	position: relative;
 	height: 27rem;
@@ -178,6 +198,7 @@ form > div {
 	position: absolute;
 	width: 12rem;
 	height: 12rem;
+	z-index: 1;
 }
 .bubble::before {
 	background-color: var(--secondary-colour);
@@ -210,29 +231,102 @@ form > div {
 .bubble__title {
 	margin-top: 0px;
 }
+/*   Mission Statement   */
+.mission-statement {
+	margin-bottom: 4rem;
+}
 .mission-side-section {
 	order: -1;
+	z-index: 1;
+}
+/*   Team Members   */
+.team-members__title {
+	text-align: center;
+	font-size: 2rem;
+}
+#team-members-list {
+	position: relative;
+	gap: 8rem;
+}
+.card-wrapper {
+	position: relative;
+	text-align: center;
+	width: 16rem;
+	height: 20rem;
+}
+.card-wrapper-bg {
+	background-color: var(--backdrop-colour);
+	position: absolute;
+	opacity: 0.1;
+	/*padding: 1rem;*/
+	width: inherit;
+	height: inherit;
+	z-index: 0;
+	left: 0px;
+	top: 0px;
+}
+.team-member {
+	background-color: white;
+	position: relative;
+	/*padding: 1rem;*/
+	width: inherit;
+	height: inherit;
+	z-index: 1;
+}
+.team-member:hover {
+	cursor: default;
+	top: -4px;
+	left: -4px;
+}
+.team-member a {
+	position: relative;
+	color: var(--secondary-colour);
+}
+a.profile-link::after {
+	background-color: var(--secondary-colour);
+	transition: width 0.25s ease-out 0s;
+	position: absolute;
+	content: "";
+	width: 0%;
+	height: 2px;
+	left: 0px;
+	bottom: 0px;
+}
+.team-member:hover a.profile-link::after {
+	width: 100%;
+}
+.profile-img-bg {
+	background-color: lightgray;
+	width: 100%;
+	height: 10rem;
+}
+img.profile-img {
+	width: 10rem;
+}
+.team-member__name {
+	color: var(--secondary-colour);
+	font-size: 1.35rem;
 }
 /********************/
 /*   Contact Page   */
 /********************/
 .contact-section {
+	position: relative;
 	margin: auto;
+	z-index: 1;
 }
 /**************/
 /*   Footer   */
 /**************/
 .page-footer {
 	background-color: var(--backdrop-colour);
+	position: relative;
 	color: white;
-	position: fixed;
-	width: 100%;
-	padding: 0px;
-	top: calc(100% - 5rem);
+	padding: 1rem;
 }
 .page-footer__copyright {
 	font-family: var(--paragraph-font);
-	margin: 1rem;
+	margin: 0rem;
 	padding: 1rem;
 }
 /*****************/

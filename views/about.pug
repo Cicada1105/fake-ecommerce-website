@@ -1,10 +1,11 @@
 extends layout.pug
 
-include static/bubble.pug
+include components/bubble.pug
+include components/team-member.pug
 
 block page-content
 	main(class="page-content",id="about-page-content")
-		div(class="flex-container")
+		div(class="mission-statement flex-container")
 			section(class="bubble-side-section")
 				+bubble("1.","Consultation")
 				+bubble("2.","Negotiation")
@@ -12,3 +13,9 @@ block page-content
 			section(class="mission-side-section")
 				h2(class="mission-section__title") Take care of what matters
 				p(class="mission-section__paragraph") Here at Assuage Solutions, our mission is to remedy your need for expanding your business. No longer do you need to worry about your online presence, leave that to us. We exist to support you and your business ventures.
+
+		section(class="team-members")
+			h2(class="team-members__title") Meet Our team
+			div(id="team-members-list" class="flex-container")
+				each member in teamMembers
+					+team-member(member.id,{src: `/imgs/team/${member.image.src}`,alt: member.image.alt},member.name,member.position)

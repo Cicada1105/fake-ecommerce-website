@@ -1,0 +1,9 @@
+mixin team-member(id,img,name,position)
+	div(class="card-wrapper")
+		article(class="team-member")
+			div(class="profile-img-bg")
+				img(src=img.src,alt=img.alt,class="profile-img")
+			h3(class="team-member__name")
+				a(class="profile-link",href=`/profile/${id}`,target="_top")= name
+			p(class="team-member__position")= position
+		div(class="card-wrapper-bg")
