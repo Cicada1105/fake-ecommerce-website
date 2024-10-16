@@ -18,4 +18,5 @@ block page-content
 			h2(class="team-members__title") Meet Our team
 			div(id="team-members-list" class="flex-container")
 				each member in teamMembers
-					+team-member(member.id,{src: `/imgs/team/${member.image.src}`,alt: member.image.alt},member.name,member.position)
+					+team-member(member)
+					//- +team-member(member.id,{src: `/imgs/team/${member.image.src}`,alt: member.image.alt},member.name,member.position)

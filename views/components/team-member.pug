@@ -1,9 +1,22 @@
-mixin team-member(id,img,name,position)
-	div(class="card-wrapper")
-		article(class="team-member")
+mixin team-member(member)
+	article(class="team-member" tabindex='0')
+		div(class='front-face')
 			div(class="profile-img-bg")
-				img(src=img.src,alt=img.alt,class="profile-img")
-			h3(class="team-member__name")
-				a(class="profile-link",href=`/profile/${id}`,target="_top")= name
-			p(class="team-member__position")= position
-		div(class="card-wrapper-bg")
+				img(src=`/imgs/team/${member['image'].src}`,alt=member['image'].alt,class="profile-img")
+			h3(class="team-member__name")= member['name']
+			p(class="team-member__position")= member['position']
+		div(class='back-face')
+			h3(class="team-member__name")= member['name']
+			dl
+				dt Email
+				dd
+					a(href=`mailto:${member['email']}`)= member['email']
+				dt Phone
+				dd
+					a(href=`tel:${member['phone']}`)= member['phone']
+				dt Cell
+				dd
+					a(href=`tel:${member['cell']}`)= member['cell']
+			ul
+				each interest in member['interests']
+					li= interest

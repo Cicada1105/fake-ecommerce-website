@@ -13,7 +13,11 @@ const teamMembers = [
 			alt: "Irene Moreno Profile Picture"
 		},
 		name: "Irene Moreno",
-		position: "Marketing Coordinator"
+		position: "Marketing Coordinator",
+		email: "irene.moreno@example.com",
+		phone: "011-227-3285",
+		cell: "081-352-8705",
+		interests: ["Organizing","Playing Tennis","Knitting"]
 	},
 	{
 		id: 2,
@@ -22,7 +26,11 @@ const teamMembers = [
 			alt: "Marius Garcia Profile Picture"
 		},
 		name: "Marius Garcia",
-		position: "Software Engineer"
+		position: "Software Engineer",
+		email: "marius.garcia@example.com",
+		phone: "949-014-110",
+		cell: "691-563-883",
+		interests: ["Guitar","Astronomy"]
 	},
 	{
 		id: 3,
@@ -31,7 +39,11 @@ const teamMembers = [
 			alt: "Rosalyn Taylor Profile Picture"
 		},
 		name: "Rosalyn Taylor",
-		position: "CEO"
+		position: "CEO",
+		email: "rosalyn.taylor@example.com",
+		phone: "018-8896-462",
+		cell: "064-9147-934",
+		interests: ["Quilting","Photography","Traveling","Writing"]
 	}
 ]
 
@@ -43,7 +55,10 @@ Router.get("/",(req,res) => {
 Router.get("/about",(req,res) => {
 	const compiledFile = pug.compileFile("./views/about.pug");
 
-
+	/*const basicTeamMembers = teamMembers.map(member => {
+		let { id, image, name, position } = member;
+		return { id, image, name, position }
+	});*/
 	res.send(compiledFile({ title: "About", teamMembers }));
 });
 Router.get("/profile/:id", (req,res) => {
@@ -54,7 +69,7 @@ Router.get("/profile/:id", (req,res) => {
 	// Retrieve team member associated with the respective id
 	const teamMember = teamMembers[id - 1];
 
-	res.send(compiledFile({ title: `${teamMember["name"]}'s Profile'}`, teamMember }));
+	res.send(compiledFile({ title: `${teamMember["name"]}'s Profile'}`, ...teamMember }));
 });
 Router.get("/contact",(req,res) => {
 	const compiledFile = pug.compileFile("./views/contact.pug");

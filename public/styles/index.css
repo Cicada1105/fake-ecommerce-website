@@ -27,13 +27,13 @@
 /*   Colour Definitions   */
 :root {
 	--primary-colour: #6d2ee3;
-	/*--secondary-colour: #79c3ca;*/
-	--secondary-colour: #397F98;
+	--secondary-colour:#00c4cc;
 	--font-colour: white;
 	--base-font-size: 16px;
 	--backdrop-colour: #373737;
 	--title-font: 'Cardo', serif;
 	--paragraph-font: 'Josefin Sans', sans-serif;
+	--primary-gradient:linear-gradient(135deg, var(--primary-colour),var(--secondary-colour));
 }
 html, body {
 	font-size: var(--base-font-size);
@@ -43,7 +43,19 @@ html, body {
 	z-index: -1;
 }
 a {
+	position: relative;
 	text-decoration: none;
+	color: var(--font-colour);
+}
+a::after {
+	background-color: var(--font-colour);
+	position: absolute;
+	transition:width 0.3s;
+	content: '';
+	height: 1px;
+	width: 0;
+	bottom: 0;
+	left: 0;
 }
 a:hover {  }
 a:active {  }
@@ -240,13 +252,16 @@ form > div {
 	z-index: 1;
 }
 /*   Team Members   */
+.team-members {
+	padding: 0rem 1rem;
+}
 .team-members__title {
 	text-align: center;
 	font-size: 2rem;
 }
 #team-members-list {
 	position: relative;
-	gap: 8rem;
+	gap: 4rem 8rem;
 }
 .card-wrapper {
 	position: relative;
@@ -254,58 +269,59 @@ form > div {
 	width: 16rem;
 	height: 20rem;
 }
-.card-wrapper-bg {
-	background-color: var(--backdrop-colour);
-	position: absolute;
-	opacity: 0.1;
-	/*padding: 1rem;*/
-	width: inherit;
-	height: inherit;
-	z-index: 0;
-	left: 0px;
-	top: 0px;
-}
 .team-member {
-	background-color: white;
 	position: relative;
-	/*padding: 1rem;*/
-	width: inherit;
-	height: inherit;
+	text-align: center;
+	width: 16rem;
+	height: 20rem;
 	z-index: 1;
 }
-.team-member:hover {
-	cursor: default;
-	top: -4px;
-	left: -4px;
+.team-member:hover > .front-face, 
+.team-member:focus > .front-face,
+.team-member:focus-within > .front-face {
+	transform: rotateY(180deg);
 }
-.team-member a {
-	position: relative;
-	color: var(--secondary-colour);
+.team-member:hover > .back-face, 
+.team-member:focus > .back-face,
+.team-member:focus-within > .back-face {
+	transform: rotateY(0deg);
 }
-a.profile-link::after {
-	background-color: var(--secondary-colour);
-	transition: width 0.25s ease-out 0s;
+.front-face, .back-face {
+	background-color: white;
+	box-shadow:4px 4px 8px 0px lightgray;
+	min-height: 100%;
+	transition:transform 0.75s;
+	backface-visibility: hidden;
+	transform-style: preserve-3d;
+}
+.back-face {
+	background:var(--primary-gradient);
 	position: absolute;
-	content: "";
-	width: 0%;
-	height: 2px;
-	left: 0px;
-	bottom: 0px;
-}
-.team-member:hover a.profile-link::after {
-	width: 100%;
+	transform: rotateY(180deg);
+	width: inherit;
+	top: 0;
 }
 .profile-img-bg {
 	background-color: lightgray;
-	width: 100%;
 	height: 10rem;
 }
 img.profile-img {
-	width: 10rem;
+	height: 100%;
 }
 .team-member__name {
 	color: var(--secondary-colour);
 	font-size: 1.35rem;
+}
+dd {
+	margin: 0;
+	margin-bottom: 0.5rem;
+}
+dd:hover > a::after {
+	width: 100%;
+}
+ul {
+	list-style-type: none;
+	padding: 0;
 }
 /********************/
 /*   Contact Page   */
