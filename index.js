@@ -8,7 +8,7 @@ const pageRoutes = require("./router.js");
 const app = express();
 
 // Server address constants
-const IP = process.env.IP || "127.0.0.1";
+const HOST = process.env.HOST || "127.0.0.1";
 const PORT = process.env.PORT || 3000;
 
 // Set view
@@ -20,6 +20,6 @@ app.use(express.static(path.join(__dirname,"public")));
 // Set base path for page routing
 app.use("/",pageRoutes);
 
-app.listen(PORT,IP,() => {
-	console.log(`Listening at: http://${IP}:${PORT}`);
+app.listen(PORT,HOST,() => {
+	console.log(`Listening at: http://${HOST}:${PORT}`);
 });
